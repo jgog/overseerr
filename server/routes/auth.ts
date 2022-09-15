@@ -86,7 +86,8 @@ authRoutes.post('/plex', async (req, res, next) => {
       if (
         account.id === mainUser.plexId ||
         (account.email === mainUser.email && !mainUser.plexId) ||
-        (await mainPlexTv.checkUserAccess(account.id))
+        ((await mainPlexTv.checkUserAccess(account.id)) &&
+          settings.main.verifyPlexLogin)
       ) {
         if (user) {
           if (!user.plexId) {
@@ -149,6 +150,24 @@ authRoutes.post('/plex', async (req, res, next) => {
 
           await userRepository.save(user);
         }
+      } else if (user && !settings.main.verifyPlexLogin) {
+        logger.info(
+          'Sign-in attempt from Plex user without access to the media server',
+          {
+            label: 'API',
+            ip: req.ip,
+            email: account.email,
+            plexId: account.id,
+            plexUsername: account.username,
+          }
+        );
+        user.plexToken = body.authToken;
+        user.plexId = account.id;
+        user.avatar = account.thumb;
+        user.email = account.email;
+        user.plexUsername = account.username;
+
+        await userRepository.save(user);
       } else {
         logger.warn(
           'Failed sign-in attempt by Plex user without access to the media server',
