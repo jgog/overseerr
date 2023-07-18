@@ -854,6 +854,33 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "andrew-kennedy",
+      "name": "Andrew Kennedy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2387159?v=4",
+      "profile": "https://github.com/andrew-kennedy",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Fallenbagel",
+      "name": "Fallenbagel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/98979876?v=4",
+      "profile": "https://github.com/Fallenbagel",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "scorp200",
+      "name": "Anton K. (ai Doge)",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9427639?v=4",
+      "profile": "http://aidoge.xyz",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "badgeTemplate": "<a href=\"#contributors-\"><img alt=\"All Contributors\" src=\"https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg\"/></a>",
